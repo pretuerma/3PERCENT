@@ -8,6 +8,17 @@
   <style>
     summary::-webkit-details-marker { display: none; }
   </style>
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+  (function(){
+  emailjs.init({
+    publicKey: "YykstihHaduQg89-H",
+  });
+  })();
+</script>
+
 </head>
 
 <body class="bg-slate-50 text-slate-900 font-sans antialiased">
@@ -76,144 +87,69 @@
     </section>
 
     <!-- Content -->
-    <section class="pb-20">
+    <section class="pb-20 pt-10">
       <div class="max-w-7xl mx-auto px-6">
-
-        <!-- Two-column layout -->
+    
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
-
-          <!-- LEFT: Contact form -->
-          <div id="contact" class="bg-white border border-slate-200 rounded-3xl shadow-xl p-8 md:p-10 flex flex-col h-full">
+    
+          <div id="contact" class="bg-white border border-slate-200 rounded-3xl shadow-xl p-8 md:p-10 flex flex-col h-full min-h-[800px]">
             <div>
               <h2 class="text-2xl font-extrabold text-slate-900">Send us a message</h2>
               <p class="mt-2 text-sm text-slate-600">
                 Tell us what you’re hiring for and we’ll reply with next steps.
               </p>
             </div>
-
-            <form action="submit.php" method="POST" class="mt-8 space-y-5 flex-1">
-              <!-- Name row -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm font-semibold text-slate-700 mb-1">First Name</label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    required
-                    class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600"
-                    placeholder="Pam"
-                  />
+    
+            <form id="contactForm" class="mt-8 space-y-5 flex-1 flex flex-col justify-between">
+              <div class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600" placeholder="First Name" />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600" placeholder="Last Name" />
+                  </div>
                 </div>
+    
                 <div>
-                  <label class="block text-sm font-semibold text-slate-700 mb-1">Last Name</label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    required
-                    class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600"
-                    placeholder="Retuerma"
-                  />
+                  <label class="block text-sm font-semibold text-slate-700 mb-1">Email</label>
+                  <input type="email" id="email" name="email" required class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600" placeholder="you@company.com" />
                 </div>
-              </div>
-
-              <!-- Email -->
-              <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-1">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600"
-                  placeholder="you@company.com"
-                />
-              </div>
-
-              <!-- Company + Role Type -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    
                 <div>
-                  <label class="block text-sm font-semibold text-slate-700 mb-1">Company (optional)</label>
-                  <input
-                    type="text"
-                    name="company"
-                    class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600"
-                    placeholder="Company Inc."
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-semibold text-slate-700 mb-1">Hire Type</label>
-                  <select
-                    name="hireType"
-                    class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600"
-                  >
-                    <option value="">Select one</option>
-                    <option value="Direct Hire">Direct Hire</option>
-                    <option value="Contract">Contract</option>
-                    <option value="Temporary">Temporary</option>
-                    <option value="Specialized Search">Specialized Search</option>
-                  </select>
+                  <label class="block text-sm font-semibold text-slate-700 mb-1">What are you looking for?</label>
+                  <textarea id="message" name="message" rows="12" class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600" placeholder="Example: We need an operations coordinator..."></textarea>
                 </div>
               </div>
-
-              <!-- Message -->
-              <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-1">
-                  What are you looking for?
-                </label>
-                <textarea
-                  name="message"
-                  rows="5"
-                  class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm focus:border-indigo-600 focus:ring-indigo-600"
-                  placeholder="Example: We need an operations coordinator within 3 weeks. Must have 2+ years experience and strong Excel. Hybrid in Calgary."
-                ></textarea>
-              </div>
-
-              <!-- Footer row -->
-              <div class="pt-2">
-                <button
-                  type="submit"
-                  class="w-full bg-slate-900 text-white py-3.5 rounded-xl font-bold text-sm hover:bg-slate-800 transition shadow-lg shadow-slate-200"
-                >
+    
+              <div class="pt-6">
+                <button type="submit" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold text-sm hover:bg-slate-800 transition shadow-lg">
                   Send Message →
                 </button>
-
-                <p class="mt-3 text-xs text-slate-500 text-center">
-                  We typically reply within 1 business day.
-                </p>
+                <p class="mt-3 text-xs text-slate-500 text-center">We typically reply within 1 business day.</p>
               </div>
             </form>
           </div>
-
-          <!-- RIGHT: Calendar booking -->
-          <div id="book" class="bg-white border border-slate-200 rounded-3xl shadow-xl p-8 md:p-10 flex flex-col h-full">
+    
+          <div id="book" class="bg-white border border-slate-200 rounded-3xl shadow-xl p-8 md:p-10 flex flex-col h-full min-h-[800px]">
             <div>
               <h2 class="text-2xl font-extrabold text-slate-900">Book a demo</h2>
               <p class="mt-2 text-sm text-slate-600">
                 Prefer a quick call? Choose a time and we’ll walk you through our process.
               </p>
             </div>
-
+    
             <div class="mt-8 flex-1 rounded-2xl overflow-hidden border border-slate-200 bg-white">
               <iframe
-                src="https://calendly.com/your-username/demo"
+                src="https://calendly.com/pamelaretuerma/30min"
                 class="w-full h-full border-0"
                 loading="lazy"
-                title="Book a demo"
-              ></iframe>
-            </div>
-
-            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-600">
-              <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-center">
-                15–20 min
-              </div>
-              <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-center">
-                Role intake
-              </div>
-              <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-center">
-                Next steps
-              </div>
+                title="Book a demo"></iframe>
             </div>
           </div>
-
+    
         </div>
       </div>
     </section>
@@ -243,11 +179,44 @@
     </div>
   </footer>
 
+  <script src="app.js"></script>
+  <script type="text/javascript">
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      // Change these to your actual IDs from the EmailJS Dashboard
+      const serviceID = 'service_6liu30t';
+      const templateID = 'template_o2a1cki';
+  
+      // Get the button to show loading state
+      const btn = event.target.querySelector('button');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = "Sending...";
+      btn.disabled = true;
+  
+      emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+          btn.innerHTML = "Message Sent! ✓";
+          btn.classList.replace('bg-slate-900', 'bg-green-600');
+          this.reset(); // Clears the form
+          
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.replace('bg-green-600', 'bg-slate-900');
+            btn.disabled = false;
+          }, 3000);
+        }, (err) => {
+          btn.innerHTML = "Error. Try Again?";
+          btn.disabled = false;
+          alert(JSON.stringify(err));
+        });
+    });
+  </script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="app.js"></script>
 </body>
 </html>
